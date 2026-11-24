@@ -1,13 +1,2 @@
-*.iml
-.gradle/
-local.properties
-.idea/
-.DS_Store
-build/
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-.workbuddy/
-.check/
-.tmp_frames/
+# All project files are intentionally tracked, including .workbuddy,
+# Gradle metadata, local.properties and build outputs.

@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher
+drawable ref_dialer_idle
+drawable ref_dialer_input
+font misans_vf
+string app_name
+style Theme.DialerClone

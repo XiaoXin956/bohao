@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_ref_dialer_input.jpg.flat",
+        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/ref_dialer_input.jpg"
+    },
+    {
+        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_ref_dialer_idle.jpg.flat",
+        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/ref_dialer_idle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\font_misans_vf.ttf.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\font\\misans_vf.ttf"
+    }
+]
