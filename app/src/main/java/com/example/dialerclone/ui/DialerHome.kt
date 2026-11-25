@@ -84,10 +84,10 @@ fun DialerHome(
         // Header
         if (inputMode) {
             val density = androidx.compose.ui.platform.LocalDensity.current
-            val stem = with(density) { 6.sdp.toPx() }
-            val top = with(density) { androidx.compose.ui.geometry.Offset(44.sdp.toPx(), 16.sdp.toPx()) }
-            val mid = with(density) { androidx.compose.ui.geometry.Offset(14.sdp.toPx(), 41.sdp.toPx()) }
-            val bottom = with(density) { androidx.compose.ui.geometry.Offset(44.sdp.toPx(), 66.sdp.toPx()) }
+            val stem = with(density) { 4.sdp.toPx() }
+            val top = with(density) { androidx.compose.ui.geometry.Offset(42.sdp.toPx(), 16.sdp.toPx()) }
+            val mid = with(density) { androidx.compose.ui.geometry.Offset(16.sdp.toPx(), 41.sdp.toPx()) }
+            val bottom = with(density) { androidx.compose.ui.geometry.Offset(42.sdp.toPx(), 68.sdp.toPx()) }
             Box(
                 Modifier
                     .offset(x = 60.sdp, y = 155.sdp)
@@ -232,14 +232,14 @@ private fun SearchField() {
 @Composable
 private fun ActionShortcuts(onAction: (String) -> Unit) {
     val labels = listOf("新建联系人", "添加到联系人", "发起视频通话", "发送信息")
-    val ys = listOf(332f, 478f, 624f, 770f)
+    val ys = listOf(333f, 479f, 625f, 771f)
     labels.forEachIndexed { index, label ->
         Text(
             label,
             Modifier
                 .offset(x = 79.sdp, y = ys[index].sdp)
                 .clickable { onAction(label) },
-            fontSize = 50.ssp,
+            fontSize = 47.ssp,
             color = DialerColors.Blue
         )
     }
@@ -301,7 +301,7 @@ private fun DialpadCard(
 
         Text(
             key.digit,
-            Modifier.offset(x = (x - 50).sdp, y = (y - 55).sdp).size(100.sdp, 120.sdp),
+            Modifier.offset(x = (x - 50).sdp, y = (y - 53).sdp).size(100.sdp, 120.sdp),
             fontSize = 92.ssp,
             color = Color.Black,
             textAlign = TextAlign.Center
@@ -309,8 +309,8 @@ private fun DialpadCard(
         if (key.letters.isNotEmpty()) {
             Text(
                 key.letters,
-                Modifier.offset(x = (x - 70).sdp, y = (LETTER_Y[key.row] - 14).sdp).size(140.sdp, 40.sdp),
-                fontSize = if (key.digit == "1") 44.ssp else 29.ssp,
+                Modifier.offset(x = (x - 70).sdp, y = (LETTER_Y[key.row] - 15).sdp).size(140.sdp, 40.sdp),
+                fontSize = if (key.digit == "1") 42.ssp else 27.ssp,
                 color = DialerColors.Letter,
                 textAlign = TextAlign.Center
             )

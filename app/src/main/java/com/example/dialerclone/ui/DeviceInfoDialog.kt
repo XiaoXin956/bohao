@@ -68,14 +68,14 @@ fun DeviceInfoDialog(onDismiss: () -> Unit) {
         Box(
             Modifier
                 .offset(x = 32.sdp, y = slideY.sdp)
-                .size(1016.sdp, 1325.sdp)
+                .size(1016.sdp, 1385.sdp)
                 .background(Color.White, RoundedCornerShape(80.sdp))
                 .clickable { /* consume clicks inside the dialog */ }
         ) {
             Text(
                 "移动设备识别码",
-                Modifier.offset(x = 208.sdp, y = 1020.sdp - 925.sdp).width(600.sdp),
-                fontSize = 40.ssp,
+                Modifier.offset(x = 208.sdp, y = 1026.sdp - 925.sdp).width(600.sdp),
+                fontSize = 50.ssp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black,
                 textAlign = TextAlign.Center
@@ -83,8 +83,8 @@ fun DeviceInfoDialog(onDismiss: () -> Unit) {
 
             Text(
                 "SN: 61913/F5RK01039",
-                Modifier.offset(x = 118.sdp, y = 1176.sdp - 925.sdp).width(780.sdp),
-                fontSize = 36.ssp,
+                Modifier.offset(x = 118.sdp, y = 1173.sdp - 925.sdp).width(780.sdp),
+                fontSize = 54.ssp,
                 color = Color.Black,
                 textAlign = TextAlign.Center
             )
@@ -92,8 +92,8 @@ fun DeviceInfoDialog(onDismiss: () -> Unit) {
 
             Text(
                 "IMEI1: 867200076532660",
-                Modifier.offset(x = 98.sdp, y = 1495.sdp - 925.sdp).width(820.sdp),
-                fontSize = 36.ssp,
+                Modifier.offset(x = 98.sdp, y = 1494.sdp - 925.sdp).width(820.sdp),
+                fontSize = 52.ssp,
                 color = Color.Black,
                 textAlign = TextAlign.Center
             )
@@ -101,8 +101,8 @@ fun DeviceInfoDialog(onDismiss: () -> Unit) {
 
             Text(
                 "IMEI2: 867200076532678",
-                Modifier.offset(x = 98.sdp, y = 1814.sdp - 925.sdp).width(820.sdp),
-                fontSize = 36.ssp,
+                Modifier.offset(x = 98.sdp, y = 1813.sdp - 925.sdp).width(820.sdp),
+                fontSize = 53.ssp,
                 color = Color.Black,
                 textAlign = TextAlign.Center
             )
@@ -110,15 +110,15 @@ fun DeviceInfoDialog(onDismiss: () -> Unit) {
 
             Box(
                 Modifier
-                    .offset(x = 72.sdp, y = 2070.sdp - 925.sdp)
-                    .size(872.sdp, 100.sdp)
-                    .background(DialerColors.ConfirmBg, RoundedCornerShape(60.sdp))
+                    .offset(x = 72.sdp, y = 2107.sdp - 925.sdp)
+                    .size(872.sdp, 138.sdp)
+                    .background(DialerColors.ConfirmBg, RoundedCornerShape(69.sdp))
                     .clickable { onDismiss() },
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     "确定",
-                    fontSize = 38.ssp,
+                    fontSize = 46.ssp,
                     color = Color.Black,
                     fontWeight = FontWeight.Medium
                 )
