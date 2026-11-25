@@ -120,7 +120,12 @@ fun DialerHome(
     var hideReference by remember { mutableStateOf(false) }
 
     Box(Modifier.fillMaxSize()) {
-        if (SHOW_REFERENCE_BACKGROUND && !hideReference) {
+        if (SHOW_REFERENCE_BACKGROUND && !hideReference &&
+            (inputProgress <= 0.001f || inputProgress >= 0.999f)
+        ) {
+            // Keep the reference image hidden while the layout is animating.
+            // Overlaying a finished-state reference during the transition caused
+            // ghost elements and a visible flash when they vanished at the end.
             Image(
                 painter = painterResource(
                     if (inputMode) R.drawable.ref_dialer_input else R.drawable.ref_dialer_idle
