@@ -59,6 +59,38 @@ private val COL_X = listOf(224f, 540f, 856f)
 private val DIGIT_Y = listOf(1302f, 1471f, 1640f, 1809f)
 private val LETTER_Y = listOf(1358f, 1527f, 1696f, 1867f)
 
+private data class KeyAsset(
+    val res: Int, val x: Float, val y: Float, val w: Float, val h: Float
+)
+
+private val KEY_ASSETS = mapOf(
+    "1" to KeyAsset(R.drawable.key_1, 213f, 1272f, 22f, 63f),
+    "2" to KeyAsset(R.drawable.key_2, 519f, 1271f, 43f, 64f),
+    "3" to KeyAsset(R.drawable.key_3, 836f, 1271f, 42f, 64f),
+    "4" to KeyAsset(R.drawable.key_4, 200f, 1441f, 48f, 63f),
+    "5" to KeyAsset(R.drawable.key_5, 519f, 1441f, 44f, 63f),
+    "6" to KeyAsset(R.drawable.key_6, 834f, 1440f, 44f, 64f),
+    "7" to KeyAsset(R.drawable.key_7, 205f, 1610f, 41f, 63f),
+    "8" to KeyAsset(R.drawable.key_8, 519f, 1609f, 43f, 64f),
+    "9" to KeyAsset(R.drawable.key_9, 835f, 1609f, 43f, 65f),
+    "0" to KeyAsset(R.drawable.key_0, 518f, 1778f, 45f, 64f),
+    "*" to KeyAsset(R.drawable.key_star, 205f, 1789f, 39f, 42f),
+    "#" to KeyAsset(R.drawable.key_hash, 839f, 1786f, 35f, 42f)
+)
+
+private val LETTER_ASSETS = mapOf(
+    "1" to KeyAsset(R.drawable.letter_1, 203f, 1351f, 41f, 18f),
+    "2" to KeyAsset(R.drawable.letter_2, 513f, 1348f, 53f, 22f),
+    "3" to KeyAsset(R.drawable.letter_3, 832f, 1348f, 48f, 21f),
+    "4" to KeyAsset(R.drawable.letter_4, 202f, 1517f, 43f, 22f),
+    "5" to KeyAsset(R.drawable.letter_5, 518f, 1517f, 43f, 22f),
+    "6" to KeyAsset(R.drawable.letter_6, 826f, 1517f, 60f, 22f),
+    "7" to KeyAsset(R.drawable.letter_7, 190f, 1686f, 68f, 22f),
+    "8" to KeyAsset(R.drawable.letter_8, 514f, 1686f, 53f, 22f),
+    "9" to KeyAsset(R.drawable.letter_9, 817f, 1686f, 77f, 21f),
+    "0" to KeyAsset(R.drawable.letter_0, 532f, 1865f, 16f, 16f)
+)
+
 @Composable
 fun DialerHome(
     number: String,
@@ -197,17 +229,15 @@ private fun SearchBar(onClick: () -> Unit) {
             .background(DialerColors.SearchBg, RoundedCornerShape(60.sdp))
             .clickable { onClick() }
     ) {
-        Icon(
-            Icons.Filled.Search,
-            contentDescription = "搜索",
-            tint = DialerColors.Placeholder,
-            modifier = Modifier.offset(x = 41.sdp, y = 36.sdp).size(48.sdp)
+        Image(
+            painter = painterResource(R.drawable.search_icon),
+            contentDescription = null,
+            modifier = Modifier.offset(x = 39.sdp, y = 32.sdp).size(40.sdp, 44.sdp)
         )
-        Text(
-            "搜索联系人",
-            Modifier.offset(x = 124.sdp, y = 35.sdp),
-            fontSize = 48.ssp,
-            color = DialerColors.Placeholder
+        Image(
+            painter = painterResource(R.drawable.search_placeholder),
+            contentDescription = null,
+            modifier = Modifier.offset(x = 121.sdp, y = 40.sdp).size(208.sdp, 41.sdp)
         )
     }
 }
@@ -221,11 +251,10 @@ private fun SearchField() {
             .size(1014.sdp, 120.sdp)
             .background(DialerColors.SearchBg, RoundedCornerShape(60.sdp))
     ) {
-        Icon(
-            Icons.Filled.Search,
-            contentDescription = "搜索",
-            tint = DialerColors.Placeholder,
-            modifier = Modifier.offset(x = 41.sdp, y = 36.sdp).size(48.sdp)
+        Image(
+            painter = painterResource(R.drawable.search_icon),
+            contentDescription = null,
+            modifier = Modifier.offset(x = 39.sdp, y = 32.sdp).size(40.sdp, 44.sdp)
         )
         BasicTextField(
             value = query,
@@ -313,20 +342,21 @@ private fun DialpadCard(
                 .referenceClickable(circleSize = 130.sdp) { onDigit(key.digit) }
         )
 
-        Text(
-            key.digit,
-            Modifier.offset(x = (x - 50).sdp, y = (y - 53).sdp).size(100.sdp, 120.sdp),
-            fontSize = 92.ssp,
-            color = Color.Black,
-            textAlign = TextAlign.Center
+        val asset = KEY_ASSETS.getValue(key.digit)
+        Image(
+            painter = painterResource(asset.res),
+            contentDescription = null,
+            modifier = Modifier
+                .offset(x = asset.x.sdp, y = asset.y.sdp)
+                .size(asset.w.sdp, asset.h.sdp)
         )
-        if (key.letters.isNotEmpty()) {
-            Text(
-                key.letters,
-                Modifier.offset(x = (x - 70).sdp, y = (LETTER_Y[key.row] - 15).sdp).size(140.sdp, 40.sdp),
-                fontSize = if (key.digit == "1") 42.ssp else 27.ssp,
-                color = DialerColors.Letter,
-                textAlign = TextAlign.Center
+        LETTER_ASSETS[key.digit]?.let { letter ->
+            Image(
+                painter = painterResource(letter.res),
+                contentDescription = null,
+                modifier = Modifier
+                    .offset(x = letter.x.sdp, y = letter.y.sdp)
+                    .size(letter.w.sdp, letter.h.sdp)
             )
         }
     }

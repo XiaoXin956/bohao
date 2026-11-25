@@ -79,7 +79,7 @@ object DialerColors {
     val Placeholder = Color(0xFFA8A8A8)
     val EmptyText = Color(0xFF666666)
     val EmptyIcon = Color(0xFFD8D8D8)
-    val Letter = Color(0xFFBCBCBC)
+    val Letter = Color(0xFF656565)
     val NavPill = Color(0xFFEEEEEE)
     val ConfirmBg = Color(0xFFF0F0F0)
     val Backspace = Color(0xFFB6B6B6)

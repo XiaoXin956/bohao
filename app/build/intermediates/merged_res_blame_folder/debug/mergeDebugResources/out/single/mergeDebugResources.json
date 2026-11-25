@@ -1,23 +1,19 @@
 [
     {
-        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_nav_label_shop.png.flat",
-        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/nav_label_shop.png"
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_6.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_6.png"
     },
     {
-        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_nav_label_call.png.flat",
-        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/nav_label_call.png"
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_5.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_5.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable\\ic_launcher.xml"
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_4.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_4.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_phone.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_phone.png"
-    },
-    {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_ref_dialer_input.jpg.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\ref_dialer_input.jpg"
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_8.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_8.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_empty_phone.png.flat",
@@ -28,19 +24,119 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\font\\misans_vf.ttf"
     },
     {
-        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_nav_label_contacts.png.flat",
-        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/nav_label_contacts.png"
-    },
-    {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_shop.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_shop.png"
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_9.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_9.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_person.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_person.png"
     },
     {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_2.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_2.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_search_placeholder.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\search_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_3.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_3.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_8.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_8.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_1.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_1.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_0.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_0.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_6.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_6.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_5.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_5.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_ref_dialer_input.jpg.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\ref_dialer_input.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_7.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_7.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_4.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_4.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_hash.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_hash.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_9.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_9.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_3.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_3.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_label_shop.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_label_shop.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_letter_1.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\letter_1.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_2.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_2.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_phone.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_phone.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_0.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_0.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_star.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_star.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_label_contacts.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_label_contacts.png"
+    },
+    {
+        "merged": "com.example.dialerclone.app-debug-47:/drawable-nodpi_search_icon.png.flat",
+        "source": "com.example.dialerclone.app-main-49:/drawable-nodpi/search_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_shop.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_shop.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_ref_dialer_idle.jpg.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\ref_dialer_idle.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_key_7.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\key_7.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-debug-47:\\drawable-nodpi_nav_label_call.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\8.11.1\\com.example.dialerclone.app-main-49:\\drawable-nodpi\\nav_label_call.png"
     }
 ]
