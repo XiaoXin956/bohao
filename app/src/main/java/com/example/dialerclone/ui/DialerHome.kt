@@ -155,11 +155,10 @@ fun DialerHome(
         // Empty call history state — drawn after the card so the text is not
         // covered where it slightly overlaps the card's top edge (as in the reference).
         if (!inputMode) {
-            Icon(
-                Icons.Filled.Call,
+            Image(
+                painter = painterResource(R.drawable.empty_phone),
                 contentDescription = null,
-                tint = DialerColors.EmptyIcon,
-                modifier = Modifier.offset(x = 455.sdp, y = 950.sdp).size(170.sdp)
+                modifier = Modifier.offset(x = 470.sdp, y = 966.sdp).size(140.sdp, 138.sdp)
             )
             Text(
                 "没有通话记录",

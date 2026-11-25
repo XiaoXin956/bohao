@@ -1,5 +1,6 @@
 R_DEF: Internal format may change without notice
 local
+drawable empty_phone
 drawable ic_launcher
 drawable ref_dialer_idle
 drawable ref_dialer_input
