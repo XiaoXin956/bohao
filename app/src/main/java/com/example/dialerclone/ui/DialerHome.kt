@@ -362,12 +362,16 @@ private fun DialpadCard(
             .border(1.sdp, Color(0xFFF0F0F0), RoundedCornerShape(80.sdp))
     )
 
-    val numberRise = 36f * (1f - progress)
-    Box(Modifier.graphicsLayer { alpha = progress }) {
-        if (number.isNotEmpty()) {
+    val hasNumber = number.isNotEmpty()
+    // The result is already visible as soon as a key is pressed; the animation
+    // only expands the row's height. On collapse it moves down and fades away.
+    val trailingAlpha = if (hasNumber) 1f else progress
+    val trailingDrop = if (hasNumber) 0f else 36f * (1f - progress)
+    if (hasNumber || progress > 0.001f) {
+        Box(Modifier.graphicsLayer { alpha = trailingAlpha }) {
             Text(
                 number,
-                Modifier.offset(x = 350.sdp, y = (1078f + numberRise).sdp).size(380.sdp, 100.sdp),
+                Modifier.offset(x = 350.sdp, y = (1078f + trailingDrop).sdp).size(380.sdp, 100.sdp),
                 fontSize = 76.ssp,
                 color = DialerColors.Green,
                 textAlign = TextAlign.Center
@@ -377,9 +381,10 @@ private fun DialpadCard(
                 contentDescription = "删除",
                 tint = DialerColors.Backspace,
                 modifier = Modifier
-                    .offset(x = 884.sdp, y = (1096f + numberRise).sdp)
+                    .offset(x = 884.sdp, y = (1096f + trailingDrop).sdp)
                     .size(62.sdp)
                     .clickable(
+                        enabled = hasNumber,
                         interactionSource = remember { MutableInteractionSource() },
                         indication = null,
                         onClick = onBackspace
