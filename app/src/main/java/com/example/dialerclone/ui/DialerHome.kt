@@ -369,14 +369,22 @@ private fun DialpadCard(
     val trailingDrop = if (hasNumber) 0f else 36f * (1f - progress)
     if (hasNumber || progress > 0.001f) {
         Box(Modifier.graphicsLayer { alpha = trailingAlpha }) {
-            Text(
-                number,
-                Modifier.offset(x = 350.sdp, y = (1080f + trailingDrop).sdp).size(380.sdp, 100.sdp),
-                fontSize = 72.ssp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF24C93F),
-                textAlign = TextAlign.Center
-            )
+            // Bounds from the native com.android.contacts:id/digits field:
+            // (226,1050)-(854,1199). Center the number inside that box.
+            Box(
+                Modifier
+                    .offset(x = 226.sdp, y = (1050f + trailingDrop).sdp)
+                    .size(628.sdp, 149.sdp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    number,
+                    fontSize = 72.ssp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color(0xFF24C93F),
+                    textAlign = TextAlign.Center
+                )
+            }
             Icon(
                 Icons.AutoMirrored.Filled.Backspace,
                 contentDescription = "删除",
