@@ -252,8 +252,8 @@ private fun DialpadCard(
     onBackspace: () -> Unit,
     onCall: () -> Unit
 ) {
-    val cardTop = if (number.isNotEmpty()) 1002f else 1185f
-    val cardHeight = 2110f - cardTop
+    val cardTop = if (number.isNotEmpty()) 1040f else 1214f
+    val cardHeight = 2150f - cardTop
 
     Box(
         Modifier
