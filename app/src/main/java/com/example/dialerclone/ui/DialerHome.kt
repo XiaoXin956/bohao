@@ -120,12 +120,7 @@ fun DialerHome(
     var hideReference by remember { mutableStateOf(false) }
 
     Box(Modifier.fillMaxSize()) {
-        if (SHOW_REFERENCE_BACKGROUND && !hideReference &&
-            (inputProgress <= 0.001f || inputProgress >= 0.999f)
-        ) {
-            // Keep the reference image hidden while the layout is animating.
-            // Overlaying a finished-state reference during the transition caused
-            // ghost elements and a visible flash when they vanished at the end.
+        if (SHOW_REFERENCE_BACKGROUND && !hideReference) {
             Image(
                 painter = painterResource(
                     if (inputMode) R.drawable.ref_dialer_input else R.drawable.ref_dialer_idle
@@ -133,6 +128,17 @@ fun DialerHome(
                 contentDescription = null,
                 modifier = Modifier.size(Ref.WIDTH.sdp, Ref.HEIGHT.sdp),
                 contentScale = ContentScale.FillBounds
+            )
+        }
+        if (inputProgress > 0.001f && inputProgress < 0.999f) {
+            // The two reference screenshots differ only above the digit grid.
+            // Cover that band while the layout animates so finished-state reference
+            // elements cannot ghost through; the stable lower half stays visible.
+            Box(
+                Modifier
+                    .offset(x = 0.sdp, y = 250.sdp)
+                    .size(Ref.WIDTH.sdp, 1000.sdp)
+                    .background(Color.White)
             )
         }
 
