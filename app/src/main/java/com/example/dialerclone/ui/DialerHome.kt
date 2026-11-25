@@ -1,6 +1,9 @@
 package com.example.dialerclone.ui
 
 import android.widget.Toast
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -107,6 +110,13 @@ fun DialerHome(
 ) {
     val context = LocalContext.current
     val inputMode = number.isNotEmpty() || searching
+    // 0 = idle dialpad, 1 = number-input state. Drives the upward expansion
+    // of the dialpad card and the fade/slide-in of the number row, as in the video.
+    val inputProgress by animateFloatAsState(
+        targetValue = if (inputMode) 1f else 0f,
+        animationSpec = tween(220, easing = FastOutSlowInEasing),
+        label = "inputProgress"
+    )
     var hideReference by remember { mutableStateOf(false) }
 
     Box(Modifier.fillMaxSize()) {
@@ -189,20 +199,29 @@ fun DialerHome(
             )
         }
 
-        // Search bar / action shortcuts
-        when {
-            searching -> SearchField()
-            number.isNotEmpty() -> ActionShortcuts {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        // Search bar / action shortcuts crossfade as the input row expands.
+        if (searching) {
+            SearchField()
+        } else {
+            Box {
+                Box(Modifier.graphicsLayer { alpha = 1f - inputProgress }) {
+                    SearchBar(onClick = { onSearchingChange(true) })
+                }
+                Box(Modifier.graphicsLayer { alpha = inputProgress }) {
+                    if (number.isNotEmpty()) {
+                        ActionShortcuts {
+                            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
-            else -> SearchBar(onClick = { onSearchingChange(true) })
         }
 
-        DialpadCard(number, onDigit, onBackspace, onCall)
+        DialpadCard(number, inputProgress, onDigit, onBackspace, onCall)
 
         // Empty call history state — drawn after the card so the text is not
         // covered where it slightly overlaps the card's top edge (as in the reference).
-        if (!inputMode) {
+        Box(Modifier.graphicsLayer { alpha = 1f - inputProgress }) {
             Image(
                 painter = painterResource(R.drawable.empty_phone),
                 contentDescription = null,
@@ -292,11 +311,12 @@ private fun ActionShortcuts(onAction: (String) -> Unit) {
 @Composable
 private fun DialpadCard(
     number: String,
+    progress: Float,
     onDigit: (String) -> Unit,
     onBackspace: () -> Unit,
     onCall: () -> Unit
 ) {
-    val cardTop = if (number.isNotEmpty()) 1040f else 1214f
+    val cardTop = 1214f + (1040f - 1214f) * progress
     val cardHeight = 2150f - cardTop
 
     Box(
@@ -313,27 +333,30 @@ private fun DialpadCard(
             .border(1.sdp, Color(0xFFF0F0F0), RoundedCornerShape(80.sdp))
     )
 
-    if (number.isNotEmpty()) {
-        Text(
-            number,
-            Modifier.offset(x = 350.sdp, y = 1078.sdp).size(380.sdp, 100.sdp),
-            fontSize = 76.ssp,
-            color = DialerColors.Green,
-            textAlign = TextAlign.Center
-        )
-        Icon(
-            Icons.AutoMirrored.Filled.Backspace,
-            contentDescription = "删除",
-            tint = DialerColors.Backspace,
-            modifier = Modifier
-                .offset(x = 884.sdp, y = 1096.sdp)
-                .size(62.sdp)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onBackspace
-                )
-        )
+    val numberRise = 36f * (1f - progress)
+    Box(Modifier.graphicsLayer { alpha = progress }) {
+        if (number.isNotEmpty()) {
+            Text(
+                number,
+                Modifier.offset(x = 350.sdp, y = (1078f + numberRise).sdp).size(380.sdp, 100.sdp),
+                fontSize = 76.ssp,
+                color = DialerColors.Green,
+                textAlign = TextAlign.Center
+            )
+            Icon(
+                Icons.AutoMirrored.Filled.Backspace,
+                contentDescription = "删除",
+                tint = DialerColors.Backspace,
+                modifier = Modifier
+                    .offset(x = 884.sdp, y = (1096f + numberRise).sdp)
+                    .size(62.sdp)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = onBackspace
+                    )
+            )
+        }
     }
 
     KEYS.forEach { key ->
