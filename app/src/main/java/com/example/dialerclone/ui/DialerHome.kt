@@ -274,7 +274,7 @@ private fun SearchBar(onClick: () -> Unit) {
     Box(
         Modifier
             .offset(x = 33.sdp, y = 286.sdp)
-            .size(1014.sdp, 120.sdp)
+            .size(1014.sdp, 121.sdp)
             .background(DialerColors.SearchBg, RoundedCornerShape(60.sdp))
             .clickable { onClick() }
     ) {
@@ -297,7 +297,7 @@ private fun SearchField() {
     Box(
         Modifier
             .offset(x = 33.sdp, y = 286.sdp)
-            .size(1014.sdp, 120.sdp)
+            .size(1014.sdp, 121.sdp)
             .background(DialerColors.SearchBg, RoundedCornerShape(60.sdp))
     ) {
         Image(
