@@ -353,21 +353,21 @@ private fun DialpadCard(
 fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
     Box(
         Modifier
-            .offset(x = 108.sdp, y = 2175.sdp)
-            .size(684.sdp, 180.sdp)
+            .offset(x = 108.sdp, y = 2182.sdp)
+            .size(684.sdp, 152.sdp)
             .shadow(
                 elevation = 10.sdp,
                 shape = RoundedCornerShape(68.sdp),
                 ambientColor = DialerColors.CardShadow,
                 spotColor = DialerColors.CardShadow
             )
-            .background(Color.White, RoundedCornerShape(68.sdp))
+            .background(Color.White, RoundedCornerShape(76.sdp))
     ) {
         Box(
             Modifier
-                .offset(x = 4.sdp, y = 4.sdp)
-                .size(244.sdp, 172.sdp)
-                .background(DialerColors.NavPill, RoundedCornerShape(64.sdp))
+                .offset(x = 4.sdp, y = 8.sdp)
+                .size(244.sdp, 136.sdp)
+                .background(DialerColors.NavPill, RoundedCornerShape(68.sdp))
         )
 
         val labels = listOf("通话", "联系人", "营业厅")
@@ -377,7 +377,7 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
             painterResource(R.drawable.nav_shop)
         )
         val iconX = listOf(24f, 23f, 27f)
-        val iconY = listOf(36f, 35f, 37f)
+        val iconY = listOf(29f, 28f, 30f)
         val iconW = listOf(53f, 55f, 47f)
         val iconH = listOf(53f, 54f, 51f)
         val labelPainters = listOf(
@@ -386,7 +386,7 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
             painterResource(R.drawable.nav_label_shop)
         )
         val labelX = listOf(23f, 9f, 8f)
-        val labelY = listOf(110f, 110f, 109f)
+        val labelY = listOf(103f, 103f, 102f)
         val labelW = listOf(56f, 86f, 86f)
         val labelH = listOf(26f, 26f, 27f)
         val centers = listOf(124f, 337f, 552f)
@@ -395,7 +395,7 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
             Box(
                 Modifier
                     .offset(x = (centers[index] - 50).sdp, y = 0.sdp)
-                    .size(100.sdp, 180.sdp)
+                    .size(100.sdp, 152.sdp)
                     .referenceClickable(circleSize = 120.sdp) { onTabSelected(index) }
             ) {
                 Image(
@@ -419,10 +419,10 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
     // Grid button on the right of the bottom navigation bar.
     Box(
         Modifier
-            .offset(x = 824.sdp, y = 2175.sdp)
-            .size(160.sdp, 180.sdp)
-            .border(1.sdp, Color(0xFFEEEEEE), RoundedCornerShape(90.sdp))
-            .background(Color.White, RoundedCornerShape(90.sdp))
+            .offset(x = 824.sdp, y = 2182.sdp)
+            .size(160.sdp, 152.sdp)
+            .border(1.sdp, Color(0xFFEEEEEE), RoundedCornerShape(76.sdp))
+            .background(Color.White, RoundedCornerShape(76.sdp))
             .referenceClickable(circleSize = 100.sdp) { /* dialpad is already visible */ }
     ) {
         val density = androidx.compose.ui.platform.LocalDensity.current
@@ -438,7 +438,7 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
             }
         }
         androidx.compose.foundation.Canvas(
-            Modifier.offset(x = 45.sdp, y = 53.sdp).size(60.sdp, 60.sdp)
+            Modifier.offset(x = 45.sdp, y = 46.sdp).size(60.sdp, 60.sdp)
         ) {
             dotCenters.forEach { center ->
                 drawCircle(color = Color.Black, radius = dotRadius, center = center)
