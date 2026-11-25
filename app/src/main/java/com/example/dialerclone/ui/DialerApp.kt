@@ -39,12 +39,15 @@ fun DialerApp() {
     fun appendDigit(digit: String) {
         val next = number + digit
         // MIUI-style secret code: *#06# opens the mobile device identity sheet.
-        // Clear the displayed text immediately, but hold the dialpad card expanded
-        // for 1s so the collapse animation starts after the dialog has appeared.
+        // Clear the displayed text 0.2s after the code is complete, while the
+        // dialpad card stays expanded for 1s before its collapse animation.
         if (next == "*#06#") {
-            number = ""
             showDeviceInfo = true
             holdExpanded = true
+            scope.launch {
+                delay(200)
+                number = ""
+            }
             scope.launch {
                 delay(1000)
                 holdExpanded = false
