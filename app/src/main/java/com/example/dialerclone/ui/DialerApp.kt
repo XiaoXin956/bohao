@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
 fun DialerApp() {
     var number by remember { mutableStateOf("") }
     var showDeviceInfo by remember { mutableStateOf(false) }
+    var holdExpanded by remember { mutableStateOf(false) }
     var searching by remember { mutableStateOf(false) }
     var selectedTab by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
@@ -38,13 +39,15 @@ fun DialerApp() {
     fun appendDigit(digit: String) {
         val next = number + digit
         // MIUI-style secret code: *#06# opens the mobile device identity sheet.
-        // Keep the number row expanded while the dialog slides in, then clear it
-        // so the row/dialpad collapse animation starts 1s after the dialog.
+        // Clear the displayed text immediately, but hold the dialpad card expanded
+        // for 1s so the collapse animation starts after the dialog has appeared.
         if (next == "*#06#") {
+            number = ""
             showDeviceInfo = true
+            holdExpanded = true
             scope.launch {
                 delay(1000)
-                number = ""
+                holdExpanded = false
             }
         } else {
             number = next
@@ -73,6 +76,7 @@ fun DialerApp() {
                 when (selectedTab) {
                         0 -> DialerHome(
                             number = number,
+                            holdExpanded = holdExpanded,
                             searching = searching,
                             onSearchingChange = { searching = it },
                             onDigit = ::appendDigit,
@@ -107,6 +111,7 @@ fun DialerApp() {
                         DeviceInfoDialog(
                             onDismiss = {
                                 showDeviceInfo = false
+                                holdExpanded = false
                                 number = ""
                             }
                         )

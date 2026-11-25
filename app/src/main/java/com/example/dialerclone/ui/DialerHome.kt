@@ -98,6 +98,7 @@ private val LETTER_ASSETS = mapOf(
 @Composable
 fun DialerHome(
     number: String,
+    holdExpanded: Boolean = false,
     searching: Boolean,
     onSearchingChange: (Boolean) -> Unit,
     onDigit: (String) -> Unit,
@@ -109,7 +110,7 @@ fun DialerHome(
     onTabSelected: (Int) -> Unit
 ) {
     val context = LocalContext.current
-    val inputMode = number.isNotEmpty() || searching
+    val inputMode = number.isNotEmpty() || searching || holdExpanded
     // 0 = idle dialpad, 1 = number-input state. Drives the upward expansion
     // of the dialpad card and the fade/slide-in of the number row, as in the video.
     val inputProgress by animateFloatAsState(
