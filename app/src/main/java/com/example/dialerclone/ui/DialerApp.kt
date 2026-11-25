@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,6 +23,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.example.dialerclone.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun DialerApp() {
@@ -30,13 +33,19 @@ fun DialerApp() {
     var searching by remember { mutableStateOf(false) }
     var selectedTab by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     fun appendDigit(digit: String) {
         val next = number + digit
         // MIUI-style secret code: *#06# opens the mobile device identity sheet.
+        // Keep the number row expanded while the dialog slides in, then clear it
+        // so the row/dialpad collapse animation starts 0.5s after the dialog.
         if (next == "*#06#") {
-            number = ""
             showDeviceInfo = true
+            scope.launch {
+                delay(500)
+                number = ""
+            }
         } else {
             number = next
         }
