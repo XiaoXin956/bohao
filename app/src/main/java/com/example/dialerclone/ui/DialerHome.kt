@@ -371,9 +371,10 @@ private fun DialpadCard(
         Box(Modifier.graphicsLayer { alpha = trailingAlpha }) {
             Text(
                 number,
-                Modifier.offset(x = 350.sdp, y = (1078f + trailingDrop).sdp).size(380.sdp, 100.sdp),
+                Modifier.offset(x = 350.sdp, y = (1080f + trailingDrop).sdp).size(380.sdp, 100.sdp),
                 fontSize = 76.ssp,
-                color = DialerColors.Green,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(0xFF24C93F),
                 textAlign = TextAlign.Center
             )
             Icon(
