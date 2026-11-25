@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -348,15 +349,26 @@ private fun DialpadCard(
     val cardTop = 1214f + (1040f - 1214f) * progress
     val cardHeight = 2150f - cardTop
 
+    // Subtle symmetric top shadow; the platform shadow alone is directional.
+    Box(
+        Modifier
+            .offset(x = 65.sdp, y = (cardTop - 20f).sdp)
+            .size(950.sdp, 20.sdp)
+            .background(
+                Brush.verticalGradient(listOf(Color.Transparent, Color(0x08000000))),
+                RoundedCornerShape(80.sdp, 80.sdp, 0.sdp, 0.sdp)
+            )
+    )
+
     Box(
         Modifier
             .offset(x = 65.sdp, y = cardTop.sdp)
             .size(950.sdp, cardHeight.sdp)
             .shadow(
-                elevation = 16.sdp,
+                elevation = 40.sdp,
                 shape = RoundedCornerShape(80.sdp),
-                ambientColor = DialerColors.CardShadow,
-                spotColor = DialerColors.CardShadow
+                ambientColor = Color(0xFF000000),
+                spotColor = Color(0x55000000)
             )
             .background(Color.White, RoundedCornerShape(80.sdp))
             .border(1.sdp, Color(0xFFF0F0F0), RoundedCornerShape(80.sdp))
