@@ -118,26 +118,53 @@ fun DialerHome(
         label = "inputProgress"
     )
     var hideReference by remember { mutableStateOf(false) }
+    var showReference by remember { mutableStateOf(true) }
+    val referenceVisible = SHOW_REFERENCE_BACKGROUND && showReference && !hideReference
 
     Box(Modifier.fillMaxSize()) {
-        if (SHOW_REFERENCE_BACKGROUND && !hideReference) {
+        if (referenceVisible) {
+            // Fixed idle screenshot: never swapped during state changes, so the
+            // background cannot flash or ghost while the input row expands.
             Image(
-                painter = painterResource(
-                    if (inputMode) R.drawable.ref_dialer_input else R.drawable.ref_dialer_idle
-                ),
+                painter = painterResource(R.drawable.ref_dialer_idle),
                 contentDescription = null,
                 modifier = Modifier.size(Ref.WIDTH.sdp, Ref.HEIGHT.sdp),
                 contentScale = ContentScale.FillBounds
             )
         }
-        if (inputProgress > 0.001f && inputProgress < 0.999f) {
-            // The two reference screenshots differ only above the digit grid.
-            // Cover that band while the layout animates so finished-state reference
-            // elements cannot ghost through; the stable lower half stays visible.
+
+        // Reference-image toggle (debug aid).
+        Box(
+            Modifier
+                .offset(x = 40.sdp, y = 100.sdp)
+                .size(110.sdp, 50.sdp)
+                .clickable { showReference = !showReference }
+        ) {
+            androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+                val trackColor = if (showReference) Color(0xFF6750A4) else Color(0xFFBDBDBD)
+                drawRoundRect(
+                    color = trackColor,
+                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(25f, 25f),
+                    size = androidx.compose.ui.geometry.Size(110f, 50f)
+                )
+                val thumbX = if (showReference) 82f else 28f
+                drawCircle(Color.White, 20f, androidx.compose.ui.geometry.Offset(thumbX, 25f))
+            }
+        }
+
+        // When the fixed idle reference is shown, hide the two regions that
+        // differ in the input state while keeping the stable lower half intact.
+        if (referenceVisible && inputMode) {
             Box(
                 Modifier
-                    .offset(x = 0.sdp, y = 250.sdp)
-                    .size(Ref.WIDTH.sdp, 1000.sdp)
+                    .offset(x = 0.sdp, y = 280.sdp)
+                    .size(Ref.WIDTH.sdp, 140.sdp)
+                    .background(Color.White)
+            )
+            Box(
+                Modifier
+                    .offset(x = 0.sdp, y = 940.sdp)
+                    .size(Ref.WIDTH.sdp, 340.sdp)
                     .background(Color.White)
             )
         }
@@ -210,29 +237,20 @@ fun DialerHome(
             )
         }
 
-        // Search bar / action shortcuts crossfade as the input row expands.
-        if (searching) {
-            SearchField()
-        } else {
-            Box {
-                Box(Modifier.graphicsLayer { alpha = 1f - inputProgress }) {
-                    SearchBar(onClick = { onSearchingChange(true) })
-                }
-                Box(Modifier.graphicsLayer { alpha = inputProgress }) {
-                    if (number.isNotEmpty()) {
-                        ActionShortcuts {
-                            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
+        // Search bar / action shortcuts switch directly; only the number row expands.
+        when {
+            searching -> SearchField()
+            number.isNotEmpty() -> ActionShortcuts {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
+            else -> SearchBar(onClick = { onSearchingChange(true) })
         }
 
         DialpadCard(number, inputProgress, onDigit, onBackspace, onCall)
 
         // Empty call history state — drawn after the card so the text is not
         // covered where it slightly overlaps the card's top edge (as in the reference).
-        Box(Modifier.graphicsLayer { alpha = 1f - inputProgress }) {
+        if (!inputMode) {
             Image(
                 painter = painterResource(R.drawable.empty_phone),
                 contentDescription = null,
