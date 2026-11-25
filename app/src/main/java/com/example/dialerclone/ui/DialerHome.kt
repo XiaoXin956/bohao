@@ -4,6 +4,9 @@ import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,12 +27,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
@@ -68,9 +74,10 @@ fun DialerHome(
 ) {
     val context = LocalContext.current
     val inputMode = number.isNotEmpty() || searching
+    var hideReference by remember { mutableStateOf(false) }
 
     Box(Modifier.fillMaxSize()) {
-        if (SHOW_REFERENCE_BACKGROUND) {
+        if (SHOW_REFERENCE_BACKGROUND && !hideReference) {
             Image(
                 painter = painterResource(
                     if (inputMode) R.drawable.ref_dialer_input else R.drawable.ref_dialer_idle
@@ -123,7 +130,15 @@ fun DialerHome(
                 Modifier
                     .offset(x = 960.sdp, y = 160.sdp)
                     .size(52.sdp, 70.sdp)
-                    .referenceClickable(circleSize = 60.sdp) { onShowDeviceInfo() }
+                    .pointerInput(Unit) {
+                        awaitEachGesture {
+                            awaitFirstDown(requireUnconsumed = false)
+                            hideReference = true
+                            val up = waitForUpOrCancellation()
+                            hideReference = false
+                            if (up != null) onShowDeviceInfo()
+                        }
+                    }
             ) {
                 androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
                     menuDots.forEach { drawCircle(Color.Black, menuDotRadius, it) }
@@ -356,29 +371,46 @@ fun BottomNav(selectedTab: Int, onTabSelected: (Int) -> Unit) {
         )
 
         val labels = listOf("通话", "联系人", "营业厅")
-        val icons = listOf(Icons.Filled.Call, Icons.Filled.AccountCircle, Icons.Filled.ShoppingBag)
+        val iconPainters = listOf(
+            painterResource(R.drawable.nav_phone),
+            painterResource(R.drawable.nav_person),
+            painterResource(R.drawable.nav_shop)
+        )
+        val iconX = listOf(24f, 23f, 27f)
+        val iconY = listOf(36f, 35f, 37f)
+        val iconW = listOf(53f, 55f, 47f)
+        val iconH = listOf(53f, 54f, 51f)
+        val labelPainters = listOf(
+            painterResource(R.drawable.nav_label_call),
+            painterResource(R.drawable.nav_label_contacts),
+            painterResource(R.drawable.nav_label_shop)
+        )
+        val labelX = listOf(23f, 9f, 8f)
+        val labelY = listOf(110f, 110f, 109f)
+        val labelW = listOf(56f, 86f, 86f)
+        val labelH = listOf(26f, 26f, 27f)
         val centers = listOf(124f, 337f, 552f)
 
-        labels.forEachIndexed { index, label ->
+        labels.indices.forEach { index ->
             Box(
                 Modifier
                     .offset(x = (centers[index] - 50).sdp, y = 0.sdp)
                     .size(100.sdp, 180.sdp)
                     .referenceClickable(circleSize = 120.sdp) { onTabSelected(index) }
             ) {
-                Icon(
-                    icons[index],
-                    contentDescription = label,
-                    tint = if (selectedTab == index) Color.Black else Color(0xFF333333),
-                    modifier = Modifier.offset(x = 15.sdp, y = 27.sdp).size(70.sdp)
+                Image(
+                    painter = iconPainters[index],
+                    contentDescription = null,
+                    modifier = Modifier
+                        .offset(x = iconX[index].sdp, y = iconY[index].sdp)
+                        .size(iconW[index].sdp, iconH[index].sdp)
                 )
-                Text(
-                    label,
-                    Modifier.offset(x = 0.sdp, y = 103.sdp).width(100.sdp),
-                    fontSize = 32.ssp,
-                    fontWeight = if (selectedTab == index) FontWeight.Bold else FontWeight.Medium,
-                    color = Color.Black,
-                    textAlign = TextAlign.Center
+                Image(
+                    painter = labelPainters[index],
+                    contentDescription = null,
+                    modifier = Modifier
+                        .offset(x = labelX[index].sdp, y = labelY[index].sdp)
+                        .size(labelW[index].sdp, labelH[index].sdp)
                 )
             }
         }

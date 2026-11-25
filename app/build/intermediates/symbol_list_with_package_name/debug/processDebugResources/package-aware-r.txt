@@ -55,6 +55,12 @@ drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_launcher
+drawable nav_label_call
+drawable nav_label_contacts
+drawable nav_label_shop
+drawable nav_person
+drawable nav_phone
+drawable nav_shop
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
