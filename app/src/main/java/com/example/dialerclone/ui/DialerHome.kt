@@ -363,17 +363,19 @@ private fun DialpadCard(
     )
 
     val hasNumber = number.isNotEmpty()
-    // The result is already visible as soon as a key is pressed; the animation
-    // only expands the row's height. On collapse it moves down and fades away.
+    // Number and backspace rise together with the expanding row (measured from
+    // the reference video: ~118px from y=1220 up to the settled position).
+    // The digits are shown immediately; only position is animated. On collapse
+    // both move back down and fade away.
     val trailingAlpha = if (hasNumber) 1f else progress
-    val trailingDrop = if (hasNumber) 0f else 36f * (1f - progress)
+    val trailingRise = 118f * (1f - progress)
     if (hasNumber || progress > 0.001f) {
         Box(Modifier.graphicsLayer { alpha = trailingAlpha }) {
             // Bounds from the native com.android.contacts:id/digits field:
             // (226,1050)-(854,1199). Center the number inside that box.
             Box(
                 Modifier
-                    .offset(x = 226.sdp, y = (1050f + trailingDrop).sdp)
+                    .offset(x = 226.sdp, y = (1050f + trailingRise).sdp)
                     .size(628.sdp, 149.sdp),
                 contentAlignment = Alignment.Center
             ) {
@@ -390,7 +392,7 @@ private fun DialpadCard(
                 contentDescription = "删除",
                 tint = DialerColors.Backspace,
                 modifier = Modifier
-                    .offset(x = 884.sdp, y = (1096f + trailingDrop).sdp)
+                    .offset(x = 884.sdp, y = (1096f + trailingRise).sdp)
                     .size(62.sdp)
                     .clickable(
                         enabled = hasNumber,
